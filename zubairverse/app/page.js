@@ -4,6 +4,8 @@
 import { useState, useEffect } from 'react';
 import Hero from './Components/Hero';
 import AboutSection from './Components/About';
+import Blog from './Components/Blog';
+import Chatbot from './Components/Chatbot';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -55,9 +57,13 @@ export default function Home() {
       {/* Page Content */}
       <main>
         <Hero />
+        <Blog />
         <AboutSection />
         {/* Other sections */}
       </main>
+
+      {/* Chatbot */}
+      <Chatbot />
     </div>
   );
 }

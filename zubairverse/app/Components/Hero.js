@@ -60,8 +60,10 @@ export default function Hero() {
   if (!mounted) return null
 
   return (
+    
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 relative z-10 overflow-hidden">
       {/* Floating particles */}
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {mounted && particles}
       </div>
@@ -92,6 +94,18 @@ export default function Hero() {
           </h1>
         </motion.div>
 
+        {/* One-liner tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          className="mb-8 md:mb-12 relative -top-16 md:-top-24"
+        >
+          <p className="text-lg md:text-xl lg:text-2xl font-medium text-primary  ">
+            🚀   Your Go-To Developer for Clean Code, Smart Architecture, and Scalable Web Apps.
+          </p>
+        </motion.div>
+
         {/* Terminal Line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -118,7 +132,7 @@ export default function Hero() {
         >
           {/* View Resume Button */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href="/Zubair_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="https://zubairmirza2970.hackerresume.io/8a22ab72-4e71-4071-8d42-c53d354dc32d" target="_blank" rel="noopener noreferrer">
               <button className="btn-glass group relative overflow-hidden top-10 md:top-14 text-sm md:text-base px-6 md:px-8 py-3 md:py-4 mb-7">
                 <span className="relative z-10 flex items-center gap-2">
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +147,8 @@ export default function Hero() {
           {/* View Projects Button */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <a href="#projects">
-              <button className="btn-glass relative group top-10 md:top-14 text-sm md:text-base px-6 md:px-8 py-3 md:py-4 mb-7">
+              <button className="btn-glass group relative overflow-hidden top-10 md:top-14 text-sm md:text-base px-6 md:px-8 py-3 md:py-4 mb-7 border border-primary rounded-lg">
+
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />

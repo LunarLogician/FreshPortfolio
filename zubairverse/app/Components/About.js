@@ -2,9 +2,8 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
-// eslint-disable-next-line react/no-unescaped-entities
 const AboutSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -292,6 +291,22 @@ const certifications = [
     }
   ];
   
+  // FAQ data
+  const faqs = [
+    {
+      question: 'What technologies do you specialize in?',
+      answer: 'I specialize in full-stack development using React, Next.js, Node.js, Express, Python, and modern databases like MongoDB and PostgreSQL. I also have experience with Docker, JWT, and cloud deployment.'
+    },
+    {
+      question: 'Are you available for freelance or collaboration?',
+      answer: 'Yes! I am open to freelance projects, collaborations, and open source contributions. Feel free to reach out via email or LinkedIn.'
+    },
+    {
+      question: 'How can I contact you?',
+      answer: 'You can contact me at zzubairahmed402@gmail.com or through my LinkedIn profile.'
+    }
+  ];
+  const [openFaq, setOpenFaq] = useState(null);
 
   return (
     <section className="min-h-screen text-[var(--text)] py-12 md:py-20 px-4 md:px-6 relative overflow-hidden" id="about">
@@ -308,9 +323,9 @@ const certifications = [
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
           <div className="space-y-4 md:space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold text-primary ">Muhammad Zubair</h3>
-            <p className="text-lg md:text-xl text-gray-300">Full Stack Web Developer</p>
-            <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed">
-              <p className="text-sm md:text-base t-9">
+            <p className="text-lg md:text-xl text-gray-300 text-primary">Full Stack Web Developer</p>
+            <div className="space-y-3 md:space-y-4 text-gray-300 leading-relaxed text-primary">
+              <p className="text-sm md:text-base t-9 text-primary">
                 I'm a passionate Full Stack Developer currently pursuing my Bachelor's in Computer Science 
                 at Bahria University Islamabad. With hands-on experience in modern web technologies, 
                 I specialize in building scalable applications using React, Node.js, and various databases.
@@ -364,18 +379,18 @@ const certifications = [
       </div>
 
       {/* Experience Section */}
-      <div id="experience" className="max-w-7xl mx-auto relative z-10 mb-24">
-        <div className="text-center mb-8 md:mb-16 ">
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 glow-text ">
+      <div id="experience" className="max-w-7xl mx-auto relative z-10 mb-24 mt-16 md:mt-24 lg:mt-32 px-4 md:px-6 py-12">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 glow-text">
             Experience
           </h2>
           <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 md:mb-8"></div>
         </div>
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 pr-8">
           {experience.map((exp, index) => (
             <div 
               key={exp.id}
-              className="bg-[var(--secondary)] rounded-2xl p-8 border border-primary/20 backdrop-blur-md hover:border-primary/40 transition-all duration-300 group"
+              className="bg-[var(--secondary)] rounded-2xl p-4 md:p-6 border border-primary/20 backdrop-blur-md hover:border-primary/40 transition-all duration-300 group cursor-pointer"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
@@ -390,14 +405,13 @@ const certifications = [
                   <p className="text-gray-400">{exp.period} • {exp.location}</p>
                 </div>
               </div>
-              <p className="text-gray-300 leading-relaxed">{exp.description}</p>
+              <p className="text-gray-300 leading-relaxed text-primary">{exp.description}</p>
             </div>
           ))}
         </div>
       </div>
-
       {/* Projects Section */}
-      <div id="projects" className="max-w-7xl mx-auto relative z-10 mb-24">
+      <div id="projects" className="max-w-7xl mx-auto relative z-10 mb-24 mt-16 md:mt-24 lg:mt-32 px-4 md:px-6">
         <div className="text-center mb-8 md:mb-16 ">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 glow-text ">
             Projects
@@ -421,7 +435,7 @@ const certifications = [
                 <h3 className="text-lg md:text-xl font-bold text-primary mb-2 md:mb-3 group-hover:glow-text transition-all duration-300">
                   {project.title}
                 </h3>
-                <p className="text-sm md:text-base text-gray-300 mb-3 md:mb-4 line-clamp-3">{project.description}</p>
+                <p className="text-sm md:text-base text-gray-300 mb-3 md:mb-4 line-clamp-3 text-primary">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
                   {project.tech.slice(0, 3).map((tech) => (
                     <span key={tech} className="px-2 md:px-3 py-1 bg-primary/20 text-primary rounded-full text-xs md:text-sm sm:mt-7">
@@ -453,7 +467,7 @@ const certifications = [
       </div>
 
       {/* Certifications Section */}
-      <div id="certifications" className="max-w-7xl mx-auto relative z-10 mb-24">
+      <div id="certifications" className="max-w-7xl mx-auto relative z-10 mb-24 mt-16 md:mt-24 lg:mt-32 py-12">
         <div className="text-center mb-8 md:mb-16 ">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 glow-text ">
             Certifications
@@ -475,7 +489,7 @@ const certifications = [
                   {cert.title}
                 </h3>
                 <p className="text-sm md:text-base text-gray-300 mb-2">{cert.issuer}</p>
-                <p className="text-xs md:text-sm text-gray-400 mb-3 md:mb-4">{cert.description}</p>
+                <p className="text-xs md:text-sm text-gray-400 mb-3 md:mb-4 text-primary">{cert.description}</p>
                 <div className="flex justify-between items-center">
                   <span className="px-2 md:px-3 py-1 bg-primary/20 text-primary rounded-full text-xs md:text-sm">
                     {cert.level}
@@ -489,7 +503,7 @@ const certifications = [
       </div>
 
       {/* Skills Section */}
-      <div id="skills" className="max-w-7xl mx-auto relative z-10 mb-24">
+      <div id="skills" className="max-w-7xl mx-auto relative z-10 mb-24 mt-16 md:mt-24 lg:mt-32">
         <div className="text-center mb-8 md:mb-16 ">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 glow-text ">
             Skills
@@ -513,7 +527,7 @@ const certifications = [
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-8 md:mt-12">
           <div className="bg-[var(--secondary)] rounded-2xl p-4 md:p-6 border border-primary/20 backdrop-blur-md">
             <h4 className="text-lg md:text-xl font-bold text-primary mb-3 md:mb-4">🏆 Achievements</h4>
-            <ul className="space-y-2 text-sm md:text-base text-gray-300">
+            <ul className="space-y-2 text-sm md:text-base text-gray-300 text-primary">
               <li>• 4th Place Competitive Programming Contest, Bahria University</li>
               <li>• Microsoft Learning Student Ambassador</li>
               <li>• Google Developer Group (GDG) On-Campus Member</li>
@@ -522,7 +536,7 @@ const certifications = [
           </div>
           <div className="bg-[var(--secondary)] rounded-2xl p-4 md:p-6 border border-primary/20 backdrop-blur-md">
             <h4 className="text-lg md:text-xl font-bold text-primary mb-3 md:mb-4">🎯 Interests</h4>
-            <ul className="space-y-2 text-sm md:text-base text-gray-300">
+            <ul className="space-y-2 text-sm md:text-base text-gray-300 text-primary">
               <li>• Blockchain & Web3 Development</li>
               <li>• AI/ML Integration</li>
               <li>• Competitive Programming</li>
@@ -536,6 +550,46 @@ const certifications = [
       <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-pulse opacity-60"></div>
       <div className="absolute top-1/3 right-20 w-1 h-1 bg-primary rounded-full animate-ping opacity-40"></div>
       <div className="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-primary rounded-full animate-pulse opacity-50"></div>
+
+      {/* FAQ Section */}
+      <div id="faq" className="max-w-4xl mx-auto relative z-10 mb-24 mt-16 md:mt-24 lg:mt-32 py-12">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6 glow-text">
+            FAQ
+          </h2>
+          <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-transparent via-primary  text-primaryto-transparent mx-auto mb-6 md:mb-8"></div>
+        </div>
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <div key={idx} className="bg-[var(--secondary)] rounded-2xl border border-primary/20 backdrop-blur-md">
+              <button
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl text-primary"
+                onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                aria-expanded={openFaq === idx}
+                aria-controls={`faq-answer-${idx}`}
+              >
+                <span className="text-lg md:text-xl font-bold text-primary">{faq.question}</span>
+                <ChevronDown
+                  className={`ml-4 transition-transform duration-300 text-primary ${openFaq === idx ? 'rotate-180' : ''}`}
+                  size={24}
+                />
+              </button>
+              {openFaq === idx && (
+                <div
+                  id={`faq-answer-${idx}`}
+                  className="px-6 pb-6 text-gray-300 text-base animate-fade-in-up text-primary"
+                >
+                  {faq.answer.includes('zzubairahmed402@gmail.com') ? (
+                    <span>
+                      You can contact me at <a href="mailto:zzubairahmed402@gmail.com" className="text-primary underline">zzubairahmed402@gmail.com</a> or through my <a href="https://linkedin.com/in/zubair" target="_blank" rel="noopener noreferrer" className="text-primary underline">LinkedIn</a> profile.
+                    </span>
+                  ) : faq.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
